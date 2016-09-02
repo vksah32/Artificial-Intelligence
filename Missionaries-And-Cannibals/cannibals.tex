@@ -1,0 +1,79 @@
+% A good introduction to latex can be found here:
+%    http://www.cse.ohio-state.edu/~hank/latex/lshort141.pdf
+
+\documentclass{article}
+
+\usepackage{full page}  % make the margins somewhat smaller than the default
+
+\usepackage{listings}  %  needed for source code listings
+\lstset{language=Java} 
+
+% set the document title, author, and date here.
+%  once set, the \maketitle command (within the document)
+%  will display them nicely
+\title{Missionaries and Cannibals Solution}
+
+\author{Vivek Sah}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+\paragraph this problem asks us to solve a problems
+
+\section{Implementation of the model}
+
+The model is implemented in 
+\verb`CannibalProblem.java`.  Here's my code for \verb`getSuccessors`:
+
+% Small trick -- dealing with tabs.  
+%  When I copied from eclipse, there were large tabs in the pasted
+%  text that made the following listing not fit on the page.  I did 
+%  a search-and-replace, by copying a tab from this document into 
+%  the "search" entry in the dialog box, and replacing with two spaces.
+
+\begin{lstlisting}
+    public ArrayList<UUSearchNode> getSuccessors() {
+	if (this.goalTest()){
+	    return new ArrayList<UUSearchNode>();
+			}
+    ArrayList<UUSearchNode> tempList = new ArrayList<UUSearchNode>();
+    int new_state = 1-this.state[2];
+    int t = (int) Math.pow(-1,this.state[2]);//decide if boat is here or not, if its here. returns -1 else +1
+
+    for(int[] array: possibilities){
+	CannibalNode temp = new CannibalNode(this.state[0]+t*array[0], this.state[1]+t*array[1], new_state, this.depth+1);
+	    if(isLegalState(temp,this)){
+		tempList.add(temp);
+ }
+    }
+    return tempList;
+}
+    
+\end{lstlisting}
+
+The basic idea of \verb`getSuccessors` is...
+
+I used a method \verb`isSafeState` that returns \verb`true` if...
+
+\begin{lstlisting}
+    private boolean isSafeState(int m, int c) {
+  
+    }
+
+\end{lstlisting}
+
+\section{Breadth-first search}
+
+
+\section{Memoizing depth-first search}
+
+\section{Path-checking depth-first search}
+
+\section{Iterative deepening search}
+
+
+
+\section{Lossy missionaries and cannibals}
+
+\end{document}
