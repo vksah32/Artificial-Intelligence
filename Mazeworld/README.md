@@ -1,4 +1,7 @@
 
+(Refer to report.pdf for more details about this project)
+
+## How to run
 
 The maze should be in top level folder in src file outside of assignment_mazeworld
 
